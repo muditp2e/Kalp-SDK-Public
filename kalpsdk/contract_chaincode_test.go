@@ -12,8 +12,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	//Custom Build Libs
-	"github.com/p2eengineering/kalp-sdk-public/mocks"
-
+	"github.com/muditp2e/kalp-sdk-public/mocks"
 )
 
 type MockChaincodeStub struct {

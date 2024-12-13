@@ -8,8 +8,7 @@ import (
 	"golang.org/x/exp/slices"
 
 	//Custom Build Libs
-	kalpsdk "github.com/p2eengineering/kalp-sdk-public/kalpsdk"
-	
+	kalpsdk "github.com/muditp2e/kalp-sdk-public/kalpsdk"
 )
 
 const nameKey = "name"
@@ -98,7 +97,6 @@ func (s *SmartContract) CreateNIU(sdk kalpsdk.TransactionContextInterface, data 
 		return fmt.Errorf("assetDigest can not be null")
 	}
 
-	
 	if niu.Status != statusInProgress && niu.Status != statusCompleted {
 		return fmt.Errorf("not a valid Status")
 	}
@@ -118,7 +116,7 @@ func (s *SmartContract) CreateNIU(sdk kalpsdk.TransactionContextInterface, data 
 	// Marshal metadata and put it in state.
 	metadataByte, err := json.Marshal(niu.MetaData)
 	if err != nil {
-		return fmt.Errorf("failed to marshal the metadata: %v", err,metadataByte )
+		return fmt.Errorf("failed to marshal the metadata: %v", err, metadataByte)
 	}
 
 	// // Mint token and store the JSON representation in the state database.

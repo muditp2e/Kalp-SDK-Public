@@ -7,7 +7,7 @@ import (
 	"time"
 
 	//Custom Build Libs
-	"github.com/p2eengineering/kalp-sdk-public/mocks"
+	"github.com/muditp2e/kalp-sdk-public/mocks"
 
 	//Third party Libs
 	"github.com/golang/protobuf/ptypes/timestamp"
