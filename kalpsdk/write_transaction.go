@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	//Custom Build Libs
-	res "github.com/muditp2e/kalp-sdk-public/v2/response"
+	res "github.com/muditp2e/kalp-sdk-public/response"
 )
 
 // PutStateWithKYC puts the specified `key` and `value` into the transaction's
