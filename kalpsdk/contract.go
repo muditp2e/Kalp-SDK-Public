@@ -18,8 +18,8 @@ import (
 	"time"
 
 	//Third party Libs
-	"github.com/hyperledger/fabric-contract-api-go/contractapi"
-	"github.com/hyperledger/fabric-contract-api-go/metadata"
+	"github.com/hyperledger/fabric-contract-api-go/v2/contractapi"
+	"github.com/hyperledger/fabric-contract-api-go/v2/metadata"
 )
 
 // Contract defines functions for setting and getting before, after and unknown transactions

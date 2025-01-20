@@ -7,13 +7,12 @@ import (
 	"time"
 
 	//Third party Libs
-	"github.com/hyperledger/fabric-chaincode-go/shim"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/hyperledger/fabric-chaincode-go/v2/shim"
+	"github.com/hyperledger/fabric-protos-go-apiv2/peer"
 	"github.com/stretchr/testify/require"
 
 	//Custom Build Libs
-	"github.com/p2eengineering/kalp-sdk-public/mocks"
-
+	"github.com/muditp2e/kalp-sdk-public/v2/mocks"
 )
 
 type MockChaincodeStub struct {

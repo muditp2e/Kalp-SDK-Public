@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	queryresult "github.com/hyperledger/fabric-protos-go/ledger/queryresult"
+	queryresult "github.com/hyperledger/fabric-protos-go-apiv2/ledger/queryresult"
 	mock "github.com/stretchr/testify/mock"
 )
 
