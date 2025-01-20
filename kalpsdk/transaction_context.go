@@ -202,6 +202,9 @@ type TransactionContextInterface interface {
 
 	// GetSignedProposal returns the signed proposal
 	GetSignedProposal() (*pb.SignedProposal, error)
+
+	// GetCalledContractAddress retrieves the contract address from the transaction context.
+	GetCalledContractAddress() (string, error)
 }
 
 // TransactionContext is a basic transaction context to be used in contracts,
