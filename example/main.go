@@ -5,7 +5,7 @@ import (
 	"log"
 
 	// Import Kalpsdk library
-	kalpsdk "github.com/p2eengineering/kalp-sdk-public/kalpsdk"
+	kalpsdk "github.com/muditp2e/kalp-sdk-public/v2/kalpsdk"
 )
 
 func main() {
