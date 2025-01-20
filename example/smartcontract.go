@@ -8,7 +8,7 @@ import (
 	"golang.org/x/exp/slices"
 
 	//Custom Build Libs
-	kalpsdk "github.com/muditp2e/kalp-sdk-public/v2/kalpsdk"
+	kalpsdk "github.com/muditp2e/kalp-sdk-public/kalpsdk"
 )
 
 const nameKey = "name"

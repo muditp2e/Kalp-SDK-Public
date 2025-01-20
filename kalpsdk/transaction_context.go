@@ -2,7 +2,7 @@ package kalpsdk
 
 import (
 	//Custom Build Libs
-	res "github.com/muditp2e/kalp-sdk-public/v2/response"
+	res "github.com/muditp2e/kalp-sdk-public/response"
 
 	//Third party Libs
 	"github.com/hyperledger/fabric-chaincode-go/v2/pkg/cid"

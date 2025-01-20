@@ -1,4 +1,4 @@
-module github.com/muditp2e/kalp-sdk-public/v2
+module github.com/muditp2e/kalp-sdk-public
 
 go 1.23.4
 
