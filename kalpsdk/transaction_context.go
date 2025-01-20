@@ -5,12 +5,12 @@ import (
 	res "github.com/p2eengineering/kalp-sdk-public/response"
 
 	//Third party Libs
-	"github.com/hyperledger/fabric-chaincode-go/pkg/cid"
-	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-chaincode-go/v2/pkg/cid"
+	"github.com/hyperledger/fabric-chaincode-go/v2/shim"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
 	//Third party Libs
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	pb "github.com/hyperledger/fabric-protos-go-apiv2/peer"
 )
 
 type TransactionContextInterface interface {

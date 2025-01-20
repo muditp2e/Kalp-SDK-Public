@@ -2,7 +2,7 @@ package kalpsdk
 
 import (
 	//Third party Libs
-	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-chaincode-go/v2/shim"
 )
 
 // StateQueryIteratorInterface allows a chaincode to iterate over a set of key/value pairs returned by range and execute query.

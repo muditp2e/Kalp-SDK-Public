@@ -4,10 +4,14 @@ import (
 	//Standard Libs
 	"encoding/base64"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 
 	//Third party Libs
+	"github.com/hyperledger/fabric-protos-go-apiv2/common"
+	"github.com/hyperledger/fabric-protos-go-apiv2/peer"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -297,4 +301,74 @@ func (ctx *TransactionContext) GetTxTimestamp() (*timestamppb.Timestamp, error) 
 //   - []string: The parameters extracted from the transaction proposal as a string array.
 func (ctx *TransactionContext) GetFunctionAndParameters() (string, []string) {
 	return ctx.GetStub().GetFunctionAndParameters()
+}
+
+// GetCalledContractAddress retrieves the contract address from the transaction context.
+// It parses the signed proposal, extracts the payload, and retrieves the contract address.
+// Returns the contract address or an error if any step fails.
+//
+// Returns:
+//   - string: The contract address extracted from the transaction context.
+//   - error: An error if any step in the process fails.
+func (ctx *TransactionContext) GetCalledContractAddress() (string, error) {
+	// Retrieve the signed proposal from the transaction context.
+	signedProposal, err := ctx.GetSignedProposal()
+	if signedProposal == nil {
+		// Return an error if the signed proposal is nil.
+		return "", fmt.Errorf("could not retrieve signed proposal: %v", err)
+	}
+	if err != nil {
+		// Return an error if there is an issue retrieving the signed proposal.
+		return "", fmt.Errorf("error in getting signed proposal: %v", err)
+	}
+
+	// Debugging information: signed proposal details.
+	data := signedProposal.GetProposalBytes()
+	if data == nil {
+		// Return an error if proposal bytes are nil.
+		return "", fmt.Errorf("error in fetching proposal bytes")
+	}
+
+	// Parse the proposal bytes into a Proposal object.
+	proposal := &peer.Proposal{}
+	err = proto.Unmarshal(data, proposal)
+	if err != nil {
+		// Return an error if unmarshalling fails.
+		return "", fmt.Errorf("error in parsing signed proposal: %v", err)
+	}
+
+	// Parse the payload from the proposal.
+	payload := &common.Payload{}
+	err = proto.Unmarshal(proposal.Payload, payload)
+	if err != nil {
+		// Return an error if unmarshalling the payload fails.
+		return "", fmt.Errorf("error in parsing payload: %v", err)
+	}
+
+	// Retrieve the channel header from the payload.
+	paystring := payload.GetHeader().GetChannelHeader()
+	if len(paystring) == 0 {
+		// Return an error if the channel header is empty.
+		return "", fmt.Errorf("channel header is empty")
+	}
+
+	// Filter printable ASCII characters from the channel header string.
+	var result []rune
+	for _, char := range string(paystring) {
+		if char >= 33 && char <= 127 {
+			result = append(result, char)
+		}
+	}
+	printableASCIIPaystring := string(result)
+
+	// Find the contract address from the processed channel header string.
+	re := regexp.MustCompile(`^klp-[a-fA-F0-9]+-cc`)
+	contractAddress := re.FindString(printableASCIIPaystring)
+	if contractAddress == "" {
+		// Return an error if the contract address is not found.
+		return "", fmt.Errorf("contract address not found")
+	}
+
+	// Return the extracted contract address.
+	return contractAddress, nil
 }

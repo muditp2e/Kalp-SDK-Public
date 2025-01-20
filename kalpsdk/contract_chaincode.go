@@ -2,9 +2,9 @@ package kalpsdk
 
 import (
 	//Third party Libs
-	"github.com/hyperledger/fabric-chaincode-go/shim"
-	"github.com/hyperledger/fabric-contract-api-go/contractapi"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/hyperledger/fabric-chaincode-go/v2/shim"
+	"github.com/hyperledger/fabric-contract-api-go/v2/contractapi"
+	"github.com/hyperledger/fabric-protos-go-apiv2/peer"
 )
 
 // ChaincodeStubInterface is used by deployable chaincode apps to access and
@@ -21,12 +21,12 @@ type ContractChaincode struct {
 // Init is called during Instantiate transaction after the chaincode container
 // has been established for the first time, passes off details of the request to Invoke
 // for handling the request if a function name is passed, otherwise returns shim.Success
-func (kc *ContractChaincode) Init(stub ChaincodeStubInterface) peer.Response {
+func (kc *ContractChaincode) Init(stub ChaincodeStubInterface) *peer.Response {
 	return kc.ContractChaincode.Init(stub)
 }
 
 // Invoke is called to update or query the ledger in a proposal transaction.
-func (kc *ContractChaincode) Invoke(stub ChaincodeStubInterface) peer.Response {
+func (kc *ContractChaincode) Invoke(stub ChaincodeStubInterface) *peer.Response {
 	return kc.ContractChaincode.Invoke(stub)
 }
 

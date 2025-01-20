@@ -3,10 +3,10 @@
 package mocks
 
 import (
-	peer "github.com/hyperledger/fabric-protos-go/peer"
+	peer "github.com/hyperledger/fabric-protos-go-apiv2/peer"
 	mock "github.com/stretchr/testify/mock"
 
-	shim "github.com/hyperledger/fabric-chaincode-go/shim"
+	shim "github.com/hyperledger/fabric-chaincode-go/v2/shim"
 
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
